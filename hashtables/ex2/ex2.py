@@ -15,15 +15,17 @@ def reconstruct_trip(tickets, length):
     
     # creating a ticket index
     for ticket in tickets:
-        ticket_idx[ticket.source] = ticket.destination
+        ticket_idx[ticket.source] = ticket.destination # storing source and destination in the ticket(index)
     
     route.append(ticket_idx["NONE"]) # it initiate the trip 
     
-    for i in range(length-1):
-        current_ticket = route[-1]
-        route.append(ticket_idx[current_ticket])
+    for i in range(length-1): # looping through ticket list
+        current_ticket = route[-1] # sets current ticket to next to first NONE
+        route.append(ticket_idx[current_ticket])# insert teh current airport to the route list
 
     return route
+
+
 
 tickets = [
     Ticket( "PIT", "ORD" ),
@@ -38,17 +40,4 @@ tickets = [
     Ticket( "BHM", "FLG" )
 ]
 
-
-# ticket_1 = Ticket("PIT", "ORD")
-# ticket_2 = Ticket("XNA", "SAP")
-# ticket_3 = Ticket("SFO", "BHM")
-# ticket_4 = Ticket("FLG", "XNA")
-# ticket_5 = Ticket("NONE", "LAX")
-# ticket_6 = Ticket("LAX", "SFO")
-# ticket_7 = Ticket("SAP", "SLC")
-# ticket_8 = Ticket("ORD", "NONE")
-# ticket_9 = Ticket("SLC", "PIT")
-# ticket_10 = Ticket("BHM", "FLG")
-
-# tickets = [ticket_1, ticket_2, ticket_3, ticket_4, ticket_5, ticket_6, ticket_7, ticket_8, ticket_9, ticket_10]
 print(reconstruct_trip(tickets, 10))
